@@ -37,6 +37,7 @@
     "hsluv": "0.0.3",
     "jsdom": "^11.11.0",
     "lodash.defaultsdeep": "^4.6.0",
+    "lodash.round": "^4.0.4",
     "mersenne-twister": "^1.1.0"
   },
   "devDependencies": {

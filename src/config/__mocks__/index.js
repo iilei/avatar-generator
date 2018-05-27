@@ -1,12 +1,14 @@
 const SEED = 'me-is-seed.';
+const PRECISION = 2;
 
 const {
   default: config,
 } = require.requireActual('../');
 
 const mock = {
-  SEED,
   ...config,
+  SEED,
+  PRECISION,
 };
 
 export default mock;

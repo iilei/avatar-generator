@@ -1,4 +1,6 @@
 /* eslint-disable no-magic-numbers */
+const PRECISION = 3;
+
 const sway = [
   [0, 360], // Values in [0, 360] -- HSLuv.html#t:HPLuvHue
   [85, 95], // Values in [0, 100] -- HSLuv.html#t:HSLuvSaturation OR HSLuv.html#t:HPLuvPastel
@@ -10,6 +12,7 @@ const defaults = {
   h: 120,
   sway,
   pastel: false,
+  PRECISION,
 };
 /* eslint-enable no-magic-numbers */
 

@@ -16,6 +16,7 @@
         - _baseColor
         - _config
         - _defaultsdeep
+        - _round
     no-magic-numbers:
       - error
       -
