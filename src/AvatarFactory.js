@@ -1,6 +1,9 @@
 import hsluv from 'hsluv';
 import MersenneTwister from 'mersenne-twister';
 import _defaultsdeep from 'lodash.defaultsdeep';
+// import canvas from 'canvas';
+// import jsdom from 'jsdom';
+// import C2S from 'canvas2svg';
 
 import defaults from './config';
 import Avatar from './Avatar';
