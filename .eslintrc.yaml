@@ -13,6 +13,9 @@
         - _fatal
         - _cwd
         - _export
+        - _baseColor
+        - _config
+        - _defaultsdeep
     no-magic-numbers:
       - error
       -

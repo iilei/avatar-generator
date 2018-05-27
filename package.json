@@ -31,7 +31,12 @@
     "node": "8.11.2",
     "npm": "6.0.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "canvas": "^2.0.0-alpha.12",
+    "hsluv": "0.0.3",
+    "lodash.defaultsdeep": "^4.6.0",
+    "mersenne-twister": "^1.1.0"
+  },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-eslint": "^8.2.3",
