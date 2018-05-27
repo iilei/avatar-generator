@@ -39,6 +39,7 @@
     -
       files:
         - "**/*.{spec,test}.js"
+        - "**/*__mocks__/*"
         - "jestsetup.js"
       rules:
         global-require: 0
@@ -52,6 +53,10 @@
           - 0
         arrow-parens:
           - 0
+        no-underscore-dangle:
+          - error
+          - allow:
+            - __setMockFiles
       env:
         jest: true
       globals:

@@ -1,3 +1,4 @@
+import creatures from './creatures';
 /* eslint-disable no-magic-numbers */
 const PRECISION = 3;
 
@@ -13,6 +14,7 @@ const defaults = {
   sway,
   pastel: false,
   PRECISION,
+  creatures,
 };
 /* eslint-enable no-magic-numbers */
 

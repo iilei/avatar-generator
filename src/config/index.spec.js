@@ -10,4 +10,8 @@ describe('config', () => {
   it('does not export "SEED" as it spoils the precious randomness', () => {
     expect(config.SEED).not.toBeDefined();
   });
+
+  it('exports creature configurations', () => {
+    expect(config.creatures).toContainAllKeys(['cat', 'human']);
+  });
 });

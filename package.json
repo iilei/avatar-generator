@@ -34,11 +34,14 @@
   "dependencies": {
     "canvas": "^2.0.0-alpha.12",
     "canvas2svg": "^1.0.16",
+    "configurable-ini": "^1.6.1",
+    "globby": "^8.0.1",
     "hsluv": "0.0.3",
     "jsdom": "^11.11.0",
     "lodash.defaultsdeep": "^4.6.0",
     "lodash.round": "^4.0.4",
-    "mersenne-twister": "^1.1.0"
+    "mersenne-twister": "^1.1.0",
+    "parameterize": "^0.1.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",
