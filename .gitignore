@@ -1,0 +1,28 @@
+## Mandatory rules
+
+### Generated content
+build/
+dist
+!build/i18n/*/Readme.md
+src/intl-message/intl-language-select/generated.js
+node_modules/
+coverage/
+
+# Yarn
+.yarnclean
+
+# Logs
+logs
+*.log
+
+#### Environment
+.env
+.phraseapp.yml
+
+
+## Opinionated rules
+.idea/
+!.idea/webResources.xml
+!.idea/jsLibraryMappings.xml
+!.idea/inspectionProfiles/Project_Default.xml
+*crash.dump

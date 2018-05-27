@@ -1,0 +1,8 @@
+# * * * generated files
+node_modules
+build
+gh-pages
+static
+dist
+bin
+coverage
