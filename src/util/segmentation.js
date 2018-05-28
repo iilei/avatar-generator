@@ -1,4 +1,4 @@
-import _round from 'lodash.round';
+import _uniq from 'lodash.uniq';
 
 import defaults from '../config';
 /*
@@ -14,28 +14,37 @@ roughly:
 
  */
 const GOLDEN_RATIO = 0.618033;
-const { PRECISION: precision } = defaults;
+const STEPS_UNLIMITED = -1;
+const { PRECISION } = defaults;
 
-const defaultOptions = {
-  ratio: GOLDEN_RATIO,
-  segments: 0,
-  precision,
-};
-
-function segmentation(matrix, opts = {}) {
-  const { segments, ratio, precision: PRECISION } = { ...defaultOptions, ...opts };
-
+function segmentation(
+  matrix,
+  ratio = GOLDEN_RATIO,
+  segments = STEPS_UNLIMITED,
+) {
   if (matrix.length > segments && segments > 0) {
     return matrix;
   }
 
-  const value = _round(matrix[1] * ratio, PRECISION);
-  if (matrix[1] === value) {
+  const value = Math.round(((matrix[1] - matrix[0]) * ratio) + matrix[0]);
+  const mirror = (matrix[matrix.length - 1] - value) + matrix[0];
+
+  if (matrix[1] === value || matrix[0] === value) {
     return matrix;
   }
 
-  const newVector = [matrix[0], value, ...matrix.slice(1)];
-  return (segmentation(newVector, { segments }));
+  const lastIndex = matrix.length - 1;
+
+  const newVector = [
+    matrix[0],
+    Math.min(value, mirror),
+    ...matrix.slice(1, lastIndex),
+    Math.max(value, mirror),
+    matrix[lastIndex],
+  ];
+
+  return (segmentation(_uniq(newVector), ratio, segments));
 }
 
+export { GOLDEN_RATIO, STEPS_UNLIMITED, PRECISION };
 export default segmentation;
