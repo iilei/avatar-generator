@@ -14,19 +14,28 @@ roughly:
 
  */
 const GOLDEN_RATIO = 0.618033;
-const { PRECISION } = defaults;
+const { PRECISION: precision } = defaults;
 
-function segmentation(vector, iterations = 0) {
+const defaultOptions = {
+  ratio: GOLDEN_RATIO,
+  iterations: 0,
+  precision,
+};
+
+function segmentation(vector, opts = {}) {
+  const { iterations, ratio, precision: PRECISION } = { ...defaultOptions, ...opts };
+
   if (vector.length > iterations + 1 || vector.length < 2) {
     return vector;
   }
-  const value = _round(vector[1] * GOLDEN_RATIO, PRECISION);
+
+  const value = _round(vector[1] * ratio, PRECISION);
   if (vector[1] === value) {
     return vector;
   }
 
   const newVector = [vector[0], value, ...vector.slice(1)];
-  return (segmentation(newVector, iterations));
+  return (segmentation(newVector, { iterations }));
 }
 
 export default segmentation;
