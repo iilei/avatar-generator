@@ -18,24 +18,24 @@ const { PRECISION: precision } = defaults;
 
 const defaultOptions = {
   ratio: GOLDEN_RATIO,
-  iterations: 0,
+  segments: 0,
   precision,
 };
 
-function segmentation(vector, opts = {}) {
-  const { iterations, ratio, precision: PRECISION } = { ...defaultOptions, ...opts };
+function segmentation(matrix, opts = {}) {
+  const { segments, ratio, precision: PRECISION } = { ...defaultOptions, ...opts };
 
-  if (vector.length > iterations + 1 || vector.length < 2) {
-    return vector;
+  if (matrix.length > segments && segments > 0) {
+    return matrix;
   }
 
-  const value = _round(vector[1] * ratio, PRECISION);
-  if (vector[1] === value) {
-    return vector;
+  const value = _round(matrix[1] * ratio, PRECISION);
+  if (matrix[1] === value) {
+    return matrix;
   }
 
-  const newVector = [vector[0], value, ...vector.slice(1)];
-  return (segmentation(newVector, { iterations }));
+  const newVector = [matrix[0], value, ...matrix.slice(1)];
+  return (segmentation(newVector, { segments }));
 }
 
 export default segmentation;
