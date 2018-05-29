@@ -15,36 +15,44 @@ roughly:
  */
 const GOLDEN_RATIO = 0.618033;
 const STEPS_UNLIMITED = -1;
-const { PRECISION } = defaults;
+const { PRECISION: precision } = defaults;
 
-function segmentation(
-  matrix,
-  ratio = GOLDEN_RATIO,
-  segments = STEPS_UNLIMITED,
-) {
-  if (matrix.length > segments && segments > 0) {
-    return matrix;
+class Segmentation {
+  constructor(opts) {
+    this.opts = {
+      ratio: GOLDEN_RATIO,
+      segments: STEPS_UNLIMITED,
+      precision,
+      ...opts,
+    };
+    this.segmentation = this.segmentation.bind(this);
+    return this.segmentation;
   }
 
-  const value = Math.round(((matrix[1] - matrix[0]) * ratio) + matrix[0]);
-  const mirror = (matrix[matrix.length - 1] - value) + matrix[0];
+  segmentation(matrix) {
+    if (matrix.length > this.opts.segments && this.opts.segments > 0) {
+      return _uniq(matrix);
+    }
 
-  if (matrix[1] === value || matrix[0] === value) {
-    return matrix;
+    const value = Math.round(((matrix[1] - matrix[0]) * this.opts.ratio) + matrix[0]);
+    const mirror = (matrix[matrix.length - 1] - value) + matrix[0];
+
+    if (matrix[1] === value || matrix[0] === value) {
+      return _uniq(matrix);
+    }
+
+    const lastIndex = matrix.length - 1;
+
+    const newVector = [
+      matrix[0],
+      Math.min(value, mirror),
+      ...matrix.slice(1, lastIndex),
+      Math.max(value, mirror),
+      matrix[lastIndex],
+    ];
+
+    return (this.segmentation(newVector));
   }
-
-  const lastIndex = matrix.length - 1;
-
-  const newVector = [
-    matrix[0],
-    Math.min(value, mirror),
-    ...matrix.slice(1, lastIndex),
-    Math.max(value, mirror),
-    matrix[lastIndex],
-  ];
-
-  return (segmentation(_uniq(newVector), ratio, segments));
 }
 
-export { GOLDEN_RATIO, STEPS_UNLIMITED, PRECISION };
-export default segmentation;
+export default Segmentation;
