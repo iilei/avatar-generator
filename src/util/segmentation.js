@@ -1,4 +1,5 @@
 import _uniq from 'lodash.uniq';
+import _round from 'lodash.round';
 
 import defaults from '../config';
 /*
@@ -25,30 +26,31 @@ class Segmentation {
       precision,
       ...opts,
     };
+
     this.segmentation = this.segmentation.bind(this);
     return this.segmentation;
   }
 
-  segmentation(matrix) {
-    if (matrix.length > this.opts.segments && this.opts.segments > 0) {
-      return _uniq(matrix);
+  segmentation(arr) {
+    if (arr.length > this.opts.segments && this.opts.segments > 0) {
+      return _uniq(arr);
     }
 
-    const value = Math.round(((matrix[1] - matrix[0]) * this.opts.ratio) + matrix[0]);
-    const mirror = (matrix[matrix.length - 1] - value) + matrix[0];
+    const lastIndex = arr.length - 1;
 
-    if (matrix[1] === value || matrix[0] === value) {
-      return _uniq(matrix);
+    const value = _round((((arr[1] - arr[0]) * this.opts.ratio) + arr[0]), this.opts.precision);
+    const mirror = _round(((arr[lastIndex] - value) + arr[0]), this.opts.precision);
+
+    if (arr[1] === value || arr[0] === value) {
+      return _uniq(arr);
     }
-
-    const lastIndex = matrix.length - 1;
 
     const newVector = [
-      matrix[0],
+      arr[0],
       Math.min(value, mirror),
-      ...matrix.slice(1, lastIndex),
+      ...arr.slice(1, lastIndex),
       Math.max(value, mirror),
-      matrix[lastIndex],
+      arr[lastIndex],
     ];
 
     return (this.segmentation(newVector));
