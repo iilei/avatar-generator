@@ -4,8 +4,8 @@ const PRECISION = 3;
 
 const sway = [
   [0, 360], // Values in [0, 360] -- HSLuv.html#t:HPLuvHue
-  [85, 95], // Values in [0, 100] -- HSLuv.html#t:HSLuvSaturation OR HSLuv.html#t:HPLuvPastel
-  [70, 80], // Values in [0, 100] -- HSLuv.html#t:HSLuvLightness
+  [0, 100], // Values in [0, 100] -- HSLuv.html#t:HSLuvSaturation OR HSLuv.html#t:HPLuvPastel
+  [0, 100], // Values in [0, 100] -- HSLuv.html#t:HSLuvLightness
 ];
 
 const defaults = {

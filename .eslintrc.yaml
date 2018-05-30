@@ -14,6 +14,7 @@
         - _cwd
         - _export
         - _baseColor
+        - _specimen
         - _config
         - _defaultsdeep
         - _round
