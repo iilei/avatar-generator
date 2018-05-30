@@ -1,11 +1,8 @@
-import { createCanvas } from 'canvas';
 import config from './config';
 
 describe('Avatar', () => {
-  const canvas = createCanvas(200, 200);
   const options = {
     pastel: false,
-    canvas,
   };
 
   it('should take SEED into account', () => {

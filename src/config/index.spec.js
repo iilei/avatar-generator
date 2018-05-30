@@ -18,8 +18,8 @@ describe('config', () => {
   it('exports sway configurations', () => {
     expect(config.sway).toEqual([
       [0, 360], // Values in [0, 360] -- HSLuv.html#t:HPLuvHue
-      [0, 100], // Values in [0, 100] -- HSLuv.html#t:HSLuvSaturation OR HSLuv.html#t:HPLuvPastel
-      [0, 100], // Values in [0, 100] -- HSLuv.html#t:HSLuvLightness
+      [15, 100], // Values in [0, 100] -- HSLuv.html#t:HSLuvSaturation OR HSLuv.html#t:HPLuvPastel
+      [15, 100], // Values in [0, 100] -- HSLuv.html#t:HSLuvLightness
     ]);
   });
 });
