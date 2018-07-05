@@ -1,2 +1,3 @@
-export default class AvatarFactory {
-}
+import Factory from './Factory';
+
+export default Factory;

@@ -1,7 +1,8 @@
-import AvatarFactory from './';
-
 describe('index', () => {
-  it('should export properly', () => {
-    expect(AvatarFactory).toBeDefined();
+  jest.mock('./Factory', () => jest.fn().mockImplementation(() => ({ toString: () => 'yolo' })));
+
+  test('should proxy Factory export', () => {
+    const Factory = require('./index').default;
+    expect((new Factory()).toString()).toEqual('yolo');
   });
 });

@@ -1,11 +1,13 @@
 {
-  "presets": ["airbnb", "es2015", ["env", {
-      "include": ["transform-es2015-arrow-functions"],
-      "useBuiltIns": true
-    }]],
+  "presets": [
+    "env",
+    "react",
+    "stage-0"
+  ],
   "plugins": [
-    "syntax-trailing-function-commas",
-    "transform-decorators-legacy",
-    "transform-class-properties"
+    "transform-class-properties",
+    "transform-decorators",
+    "transform-react-constant-elements",
+    "transform-react-inline-elements"
   ]
 }
