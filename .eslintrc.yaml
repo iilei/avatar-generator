@@ -35,8 +35,10 @@
     -
       files:
         - "**/*.{spec,test}.js"
-        - "jestsetup.js"
+        - "testutils/**/*"
       rules:
+        import/no-extraneous-dependencies: 0
+        no-underscore-dangle: 0
         global-require: 0
         no-unused-expressions:
           - 0

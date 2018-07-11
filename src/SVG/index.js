@@ -15,7 +15,7 @@ export default class SVG {
 
     const jsx = (
       <svg width={200} height={200}>
-        <circle cx={100} cy={100} r={50} />
+        <circle cx={100} cy={10} r={50} bg="#bada55" />
       </svg>
     );
 

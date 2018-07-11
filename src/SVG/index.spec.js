@@ -7,7 +7,6 @@ describe('SVG', () => {
 
   it('should do properly', () => {
     const instance = new SVG();
-
-    expect(instance.toString()).toMatchSnapshot();
+    expect(instance.toString()).toMatchSvgSnapshot();
   });
 });
