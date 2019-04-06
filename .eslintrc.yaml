@@ -3,10 +3,12 @@
   extends:
     - airbnb
   root: true
-  parser: "babel-eslint"
+  parser: babel-eslint
   globals:
     process: false
   rules:
+    react/jsx-filename-extension:
+      - off
     no-underscore-dangle:
       - error
       - allow:

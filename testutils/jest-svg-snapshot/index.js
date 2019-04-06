@@ -2,8 +2,10 @@ const kebabCase = require('lodash/kebabCase');
 const merge = require('lodash/merge');
 const path = require('path');
 const Chalk = require('chalk').constructor;
-const { diffSvgToSnapshot } = require('./diff-snapshot');
 const fs = require('fs');
+
+const { diffSvgToSnapshot } = require('./diff-snapshot');
+const beautifyXML = require('./beautifyXML');
 
 const SNAPSHOTS_DIR = '__svg_snapshots__';
 
@@ -47,23 +49,22 @@ function configureToMatchSvgSnapshot({
     if (snapshotState._updateSnapshot === 'none' && !fs.existsSync(baselineSnapshotPath)) {
       return {
         pass: false,
-        message: () => `New snapshot was ${chalk.bold.red('not written')}. The update flag must be explicitly ` +
-        'passed to write a new snapshot.\n\n + This is likely because this test is run in a continuous ' +
-        'integration (CI) environment in which snapshots are not written by default.\n\n',
+        message: () => `New snapshot was ${chalk.bold.red('not written')}. The update flag must be explicitly `
+        + 'passed to write a new snapshot.\n\n + This is likely because this test is run in a continuous '
+        + 'integration (CI) environment in which snapshots are not written by default.\n\n',
       };
     }
 
-    const result =
-      diffSvgToSnapshot({
-        receivedSvg: received,
-        snapshotsDir,
-        snapshotIdentifier,
-        updateSnapshot: snapshotState._updateSnapshot === 'all',
-        customDiffConfig: Object.assign({}, commonCustomDiffConfig, customDiffConfig),
-        failureThreshold,
-        failureThresholdType,
-        updatePassedSnapshot,
-      });
+    const result = diffSvgToSnapshot({
+      receivedSvg: beautifyXML(received),
+      snapshotsDir,
+      snapshotIdentifier,
+      updateSnapshot: snapshotState._updateSnapshot === 'all',
+      customDiffConfig: Object.assign({}, commonCustomDiffConfig, customDiffConfig),
+      failureThreshold,
+      failureThresholdType,
+      updatePassedSnapshot,
+    });
 
     let pass = true;
     /*

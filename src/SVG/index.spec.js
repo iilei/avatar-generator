@@ -1,4 +1,4 @@
-import SVG from './.';
+import SVG from '.';
 
 describe('SVG', () => {
   it('should export properly', () => {

@@ -4,12 +4,13 @@ import svgx from 'svgx';
 
 
 export default class SVG {
-  constructor() {
-    // const svg = SvgJs(window);
-    // const { document } = window;
-    // const draw = svg(document.documentElement);
-    // draw.rect(100,100).fill('yellow').move(50,50)
-  }
+  // constructor() {
+  //   // const svg = SvgJs(window);
+  //   // const { document } = window;
+  //   // const draw = svg(document.documentElement);
+  //   // draw.rect(100,100).fill('yellow').move(50,50)
+  // }
+
   toString = () => {
     const render = svgx(reactDom.renderToStaticMarkup);
 
