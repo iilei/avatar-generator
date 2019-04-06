@@ -1,4 +1,4 @@
-# Avatar Generator
+# [WIP] Avatar Generator
 
 Yet another Generator for user avatars ... YAGFUSA 🤓
 
